@@ -1,0 +1,76 @@
+SeedDMS, 4.3.22
+
+Ubuntu-12.04.5-server-amd64.iso
+
+version 4.3.18
+ 
+sudo apt-get update && sudo apt-get upgrade
+sudo apt-get install apache2
+
+sudo nano /etc/apache2/sites-available/example.com.conf
+
+    <VirtualHost *:80>
+         ServerAdmin webmaster@example.com
+         ServerName example.com
+         ServerAlias www.example.com
+         DocumentRoot /var/www/example.com/public_html/
+         ErrorLog /var/www/example.com/logs/error.log
+         CustomLog /var/www/example.com/logs/access.log combined
+    </VirtualHost>
+	
+sudo mkdir -p /var/www/example.com/public_html
+sudo mkdir /var/www/example.com/logs
+sudo a2ensite example.com.conf
+sudo service apache2 reload
+sudo apt-get install mysql-server
+mysql_secure_installation
+sudo apt-get install php5 php-pear
+sudo apt-get install php5-mysql
+sudo mkdir /var/log/php
+sudo chown www-data /var/log/php
+sudo service apache2 restart
+ifconfig eth0 | grep inet | awk '{ print $2 }'
+
+sudo pear channel-update pear.php.net
+sudo apt-get install php-pear
+sudo pear install Mail
+sudo pear install Log
+sudo pear install HTTP_WebDAV_Server-1.0.0RC8
+pear uninstall zend/zend
+pear channel-delete zend.googlecode.com/svn
+pear channel-discover pear.dotkernel.com/zf1/svn
+pear install zend/zend
+
+sudo mkdir /home/www-data
+
+wget https://sourceforge.net/projects/seeddms/files/seeddms-4.3.22/
+sudo wget https://sourceforge.net/projects/seeddms/files/seeddms-4.3.22/seeddms-4.3.22.tar.gz
+sudo wget https://sourceforge.net/projects/seeddms/files/seeddms-4.3.22/SeedDMS_Core-4.3.22.tgz
+sudo wget https://sourceforge.net/projects/seeddms/files/seeddms-4.3.22/SeedDMS_Lucene-1.1.6.tgz
+sudo wget https://sourceforge.net/projects/seeddms/files/seeddms-4.3.22/SeedDMS_Preview-1.1.4.tgz
+sudo wget https://sourceforge.net/projects/seeddms/files/seeddms-4.3.22/SeedDMS_SQLiteFTS-1.0.1.tgz
+
+
+tar -zxvf seeddms-4.3.22.tar.gz
+sudo pear install SeedDMS_Core-4.3.22.tgz
+sudo pear install SeedDMS_Lucene-1.1.6.tgz
+sudo pear install SeedDMS_Preview-1.1.4.tgz
+sudo pear install SeedDMS_SQLiteFTS-1.0.1.tgz
+
+
+
+
+sudo nano /etc/apache2/sites-enabled/000-default.conf
+
+sudo touch /home/www-data/seeddms-4.3.22/
+sudo touch /home/www-data/seeddms-4.3.22/conf/ENABLE_INSTALL_TOOL
+
+
+https://sourceforge.net/projects/seeddms/files/seeddms-5.1.16/seeddms-quickstart-5.1.16.tar.gz/download
+
+
+wget https://sourceforge.net/projects/seeddms/files/seeddms-5.1.16/seeddms-quickstart-5.1.16.tar.gz
+
+
+
+
